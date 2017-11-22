@@ -102,6 +102,15 @@ public class AmqpConfig {
 		template.setMessageConverter(new Jackson2JsonMessageConverter());//设置默认的消息序列化方法
 		return template;
 	}
-	
-	
+
+//	@Bean
+//	SimpleMessageListenerContainer container(ConnectionFactory connectionFactory) {
+//		SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+//		container.setConnectionFactory(connectionFactory);
+//		container.setQueueNames(mqDefaultQueueName);
+//		container.setMessageListener(new MyMessageListener());
+//		return container;
+//	}
+
+
 }

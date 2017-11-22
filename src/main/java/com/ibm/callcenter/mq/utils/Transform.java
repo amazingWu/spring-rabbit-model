@@ -1,5 +1,7 @@
 package com.ibm.callcenter.mq.utils;
 
+import com.ibm.callcenter.mq.message.MqMessageContent;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -22,7 +24,7 @@ public class Transform {
             bo.close();
             oo.close();
         } catch (Exception e) {
-            System.out.println("ObjectToByte error" + e.getMessage());
+            System.out.println("ObjectToByte error " + e.getMessage());
             e.printStackTrace();
         }
         return bytes;
@@ -43,7 +45,7 @@ public class Transform {
             bi.close();
             oi.close();
         } catch (Exception e) {
-            System.out.println("ByteToObject error" + e.getMessage());
+            System.out.println("ByteToObject error " + e.getMessage());
             e.printStackTrace();
         }
         return obj;

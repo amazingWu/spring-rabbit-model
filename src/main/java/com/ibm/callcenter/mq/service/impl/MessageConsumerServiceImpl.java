@@ -4,9 +4,12 @@ import com.ibm.callcenter.mq.service.MessageConsumerService;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
+@Scope(scopeName = "prototype")
 public class MessageConsumerServiceImpl implements MessageConsumerService{
 	
 	@Autowired

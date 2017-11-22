@@ -5,18 +5,17 @@ import com.ibm.callcenter.mq.service.MessageProductorService;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
+@Scope(scopeName = "prototype")
 public class MessageProductorServiceImpl implements MessageProductorService{
 	@Autowired
 	private AmqpTemplate amqpTemplate;
 
-	/**
-	 * 向默认Exchange默认routingKey发送消息
-	 * @param message 消息体
-	 * @return
-	 */
+
 	@Override
 	public boolean send(Message message){
 		try {
@@ -28,12 +27,7 @@ public class MessageProductorServiceImpl implements MessageProductorService{
 		}
 	}
 
-	/**
-	 * 向默认Exchange的指定routingKey发送消息
-	 * @param routingKey 路由键（队列名）
-	 * @param message 消息体
-	 * @return
-	 */
+
 	@Override
 	public boolean send(String routingKey, Message message){
 		try {
@@ -45,13 +39,7 @@ public class MessageProductorServiceImpl implements MessageProductorService{
 		}
 	}
 
-	/**
-	 * 向指定Exchange的指定routingKey发送消息
-	 * @param exchange Exchange名称
-	 * @param routingKey 路由键（队列名）
-	 * @param message 消息体
-	 * @return
-	 */
+
 	@Override
 	public boolean send(String exchange, String routingKey, Message message) {
 		try {
@@ -63,11 +51,7 @@ public class MessageProductorServiceImpl implements MessageProductorService{
 		}
 	}
 
-	/**
-	 * 向默认exchange的默认routingKey 发送消息（会自行将普通消息转换为Message）
-	 * @param obj 消息体
-	 * @return
-	 */
+
 	@Override
 	public boolean convertAndSend(Object obj) {
 		try {

@@ -4,13 +4,36 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
 
 public interface MessageProductorService {
-    boolean send(Message var1);
+    /**
+     * 向默认Exchange默认routingKey发送消息
+     * @param message 消息体
+     * @return
+     */
+    boolean send(Message message);
 
-    boolean send(String var1, Message var2);
+    /**
+     * 向默认Exchange的指定routingKey发送消息
+     * @param routingKey 路由键（队列名）
+     * @param message 消息体
+     * @return
+     */
+    boolean send(String routingKey, Message message);
 
-    boolean send(String var1, String var2, Message var3);
+    /**
+     * 向指定Exchange的指定routingKey发送消息
+     * @param exchange Exchange名称
+     * @param routingKey 路由键（队列名）
+     * @param message 消息体
+     * @return
+     */
+    boolean send(String exchange, String routingKey, Message message);
 
-    boolean convertAndSend(Object var1);
+    /**
+     * 向默认exchange的默认routingKey 发送消息（相应的接收时需要使用receiveAndConvert）
+     * @param obj 消息体
+     * @return
+     */
+    boolean convertAndSend(Object obj);
 
     boolean convertAndSend(String var1, Object var2);
 

@@ -11,8 +11,8 @@ import java.util.Date;
 public class MqMessageContent implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Date createTime;
-    private String customerId;
-    private String bussinessId;
+    private String customerKey; // 用户的Key
+    private String businessKey; // 业务线的key
     private String content;
 
     public Date getCreateTime() {
@@ -24,27 +24,27 @@ public class MqMessageContent implements Serializable{
     }
 
     /**
-     * 发送用户Id
+     * 发送用户key
      * @return
      */
-    public String getCustomerId() {
-        return customerId;
+    public String getCustomerKey() {
+        return customerKey;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setCustomerKey(String customerKey) {
+        this.customerKey = customerKey;
     }
 
     /**
-     * 等待接收的业务部门
+     * 等待接收的业务部门key
      * @return
      */
-    public String getBussinessId() {
-        return bussinessId;
+    public String getBusinessKey() {
+        return businessKey;
     }
 
-    public void setBussinessId(String bussinessId) {
-        this.bussinessId = bussinessId;
+    public void setBusinessKey(String businessKey) {
+        this.businessKey = businessKey;
     }
 
     /**
